@@ -30,6 +30,8 @@ export class AdminBugsComponent implements OnInit {
 
   public show = false;
 
+  tableId:string;
+
   public buttonName: any = 'Table View';
   shown = false;
 
@@ -59,12 +61,15 @@ export class AdminBugsComponent implements OnInit {
     switch (this.typeOfReport) {
       case "Resolved":
         this.bugReports = await this.apiservice.getResolvedBugs();
+        this.tableId = "resolvedBugsTable";
         break;
       case "Unresolved":
         this.bugReports = await this.apiservice.getUnResolvedBugs();
+        this.tableId = "unresolvedBugsTable";
         break;
       case "Requested":
         this.bugReports = await this.apiservice.getRequestedBugs();
+        this.tableId = "adminBugsTable";
         break;
       default:
         break;

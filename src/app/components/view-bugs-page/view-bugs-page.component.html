@@ -1,5 +1,5 @@
 <mat-tab-group animationDuration="1000ms" class="tab-group">
     <mat-tab label="Resolved Bugs"><app-admin-bugs [typeOfReport] = "typeOfReport[0]"></app-admin-bugs>></mat-tab>
-    <mat-tab id="unresolvedBugs" label="Unresolved Bugs" *ngIf="isAdmin || isDeveloper"> <app-admin-bugs [typeOfReport] = "typeOfReport[1]"></app-admin-bugs> </mat-tab>
+    <mat-tab label="Unresolved Bugs" *ngIf="isAdmin || isDeveloper"> <app-admin-bugs [typeOfReport] = "typeOfReport[1]"></app-admin-bugs> </mat-tab>
     <mat-tab label="Requested bugs" *ngIf="isAdmin"> <app-admin-bugs [typeOfReport] = "typeOfReport[2]"></app-admin-bugs> </mat-tab>
 </mat-tab-group>

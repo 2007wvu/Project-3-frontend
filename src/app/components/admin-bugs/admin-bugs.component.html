@@ -4,6 +4,6 @@
         <mat-slide-toggle color="accent" (click)="toggle()">{{buttonName}}</mat-slide-toggle>
     </div>
 
-    <app-admin-bugs-table id="adminBugsTable" *ngIf="bugReports" [hidden]="shown" [bugReports]="bugReports"> </app-admin-bugs-table>
+    <app-admin-bugs-table [id]="tableId" *ngIf="bugReports" [hidden]="shown" [bugReports]="bugReports"> </app-admin-bugs-table>
     <app-admin-bugs-cards *ngIf="show" [bugReports]="bugReports"></app-admin-bugs-cards>
 </div>

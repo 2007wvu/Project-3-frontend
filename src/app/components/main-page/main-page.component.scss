@@ -64,13 +64,43 @@
 }
 
 .application-select{
-  position:relative;
+  margin:20px;
+  overflow:hidden;
   select{
-    display:none;
+    margin-bottom:20px;
+    width: 100%;
+    font-size: x-large;
+    height: 60px;
+    border: none;
+    background-color: inherit;
+    background: linear-gradient(45deg, transparent 50%, red 50%), linear-gradient(135deg, red 50%, transparent 50%);
+    background-position: calc(100% - 16px) calc(1em + 0px), calc(100% - 1px) calc(1em + 0px), 100% 0px;
+    background-size: 15px 16px, 15px 16px, 2.5em 2.5em;
+    background-repeat: no-repeat;
+    -webkit-appearance: none;
+    box-shadow:
+   
+    0 1px 3px 0px rgba(211, 19, 57, 0.822);
+    -moz-appearance: none;
+    line-height: 60px;
+    &:focus {
+      outline:none;
+      cursor:default;
+      &:hover{
+        background: linear-gradient(135deg, transparent 50%, red 50%), linear-gradient(45deg, red 50%, transparent 50%);
+        background-position: calc(100% - 16px) calc(1em + 0px), calc(100% - 1px) calc(1em + 0px), 100% 0px;
+        background-size: 15px 16px, 15px 16px, 2.5em 2.5em;
+        background-repeat: no-repeat;
+      }
+    }
+    &:hover{
+      cursor: pointer;
+    }
+    
   }
+ 
   
 }
-
 .report-container{
     margin-bottom:24px;
 }
@@ -80,6 +110,8 @@
     justify-content: flex-end;
     align-items: center;
 }
+
+
 
 // =================================== OLD CSS =============================================
 /* .mainPageContainer{
@@ -107,11 +139,25 @@ p.mainLogo{
     height: 65px;
     transform: translate(25px) rotate(145deg) ;
     z-index: 2;
+    &:hover{
+      cursor: crosshair;
+      &:active{
+        border: 2px dashed black;
+        border-radius: 50%;
+      }
+    }
 }
 .mainBugR{
     width: 65px;
     height: 65px;
     transform: rotate(225deg);
+    &:hover{
+      cursor: crosshair;
+      &:active{
+        border: 2px dashed black;
+        border-radius: 50%;
+      }
+    }
 }
 
 

@@ -2,8 +2,11 @@
     <div class="mainLeaderboardLogo">
         Leaderboard
     </div>
-
-    <div class="mainLeaderboardRow" *ngFor="let client of clients">
-        {{client.name}}:&nbsp;{{client.points}}
+    <div class="main-leaderboard-row-container">
+        <div class="mainLeaderboardRow" *ngFor="let client of clients">
+            {{client.name}}:&nbsp;{{client.points}}
+        </div>
     </div>
+        
+        
 </div>

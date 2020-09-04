@@ -1,4 +1,4 @@
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 770px) {
     .main-section {
         display: flex;
         flex-wrap: nowrap;
@@ -6,14 +6,22 @@
         margin-left: -15px;
         flex-direction: column!important;
     }
-    .col-9{
-        -ms-flex: 1 0 0!important;
-        flex: 1 0 0!important;
-        -ms-flex-preferred-size: 0!important;
-        flex-basis: 0!important;
-        -ms-flex-positive: 1!important;
-        flex-grow: 1!important;
-        max-width: 100%!important;
+    .leaderboard-column{
+      align-self:center;
+      -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+      -ms-flex-positive: 1;
+      flex-grow: 1;
+      max-width: 100%;
+      app-main-page-leaderboard{
+        width:100%;
+        overflow:auto;
+      }
+    }
+
+    .banner-row{
+      padding: 25px 0 25px 0;
+      justify-content: center!important;
     }
   }
 
@@ -36,16 +44,31 @@
 }
 
 .leaderboard-column{
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
     display:flex;
     justify-content: center;
+    -ms-flex: 1 0 0;
+    flex: 1 0 0;
+    max-width: 400px;
     app-main-page-leaderboard{
-        width:100%;
-        overflow:auto;
+      width:370px;
+      overflow:auto;
     }
 }
 
-.application-select{
+.application-select-container{
     width:100%;
+}
+
+.application-select{
+  position:relative;
+  select{
+    display:none;
+  }
+  
 }
 
 .report-container{

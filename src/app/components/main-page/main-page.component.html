@@ -6,27 +6,28 @@
         </div>
     </div>
     <section class="main-section">
-            <div class="col">
-                <div class="leaderboard-column">
-                    <app-main-page-leaderboard></app-main-page-leaderboard>
-                </div>
+            <div class="leaderboard-column">
+                <app-main-page-leaderboard></app-main-page-leaderboard>
             </div>
             <div class="col-1"></div>
-            <div class="col-8">
+            <div class="col">
                 <div class="row">
-                    <div class="col-5">
-                        <div class="application-select">
-                            <select [(ngModel)] = "selectedApp" (change)="selectChangeHandler($event)">
-                                <option *ngFor="let app of applications" id = "app{{app.id}}" [ngValue] ="app">{{app.title}}</option>
-                            </select>
+                    <div class="col-12">
+                        <div class="application-select-container">
+                            <div class="application-select">
+                                <select [(ngModel)] = "selectedApp" (change)="selectChangeHandler($event)">
+                                    <option *ngFor="let app of applications" id = "app{{app.id}}" [ngValue] ="app">{{app.title}}</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-7"></div> 
                 </div>
                 <div class="row">
-                    <div class="bug-list-column">
-                        <div class="report-container" *ngFor="let report of bugReports">
-                            <app-main-page-bug [bugReport]="report"></app-main-page-bug>
+                    <div class="col-12">
+                        <div class="bug-list-column">
+                            <div class="report-container" *ngFor="let report of bugReports">
+                                <app-main-page-bug [bugReport]="report"></app-main-page-bug>
+                            </div>
                         </div>
                     </div>
                 </div>

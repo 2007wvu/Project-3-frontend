@@ -54,7 +54,7 @@ export class ApplicationComponent implements OnInit {
       this.clear()
       if(this.app)
       this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-        this.router.navigate(['/application'])}
+        this.router.navigate(['/applications'])}
         );
       }
     }

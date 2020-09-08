@@ -64,49 +64,49 @@
 
     <!-- Bug Title Column -->
     <ng-container  matColumnDef="title">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortColumn('title')">Title</th>
+      <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortColumn('title')">Title</th>
       <td mat-cell  *matCellDef="let row" >{{row.title}}</td>
     </ng-container>
 
     <!-- Application Column -->
     <ng-container matColumnDef="application">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortColumn('application')">Application</th>
+      <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortColumn('application')">Application</th>
       <td mat-cell *matCellDef="let row">{{row.app.title}}</td>
     </ng-container>
 
     <!-- Location Column -->
     <ng-container matColumnDef="location">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortColumn('location')">Location</th>
+      <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortColumn('location')">Location</th>
       <td mat-cell *matCellDef="let row">{{row.location}}</td>
     </ng-container>
 
     <!-- Severity Column -->
     <ng-container matColumnDef="severity">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortPrioSev('severity')">Severity</th>
+      <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortPrioSev('severity')">Severity</th>
       <td mat-cell *matCellDef="let row">{{row.severity}}</td>
     </ng-container>
 
     <!-- Priority Column -->
     <ng-container matColumnDef="priority">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortPrioSev('priority')">Priority</th>
+      <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortPrioSev('priority')">Priority</th>
       <td mat-cell *matCellDef="let row">{{row.priority}}</td>
     </ng-container>
 
     <!-- Date Column -->
     <ng-container matColumnDef="date">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortColumn('date')">Date</th>
+      <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortColumn('date')">Date</th>
       <td mat-cell *matCellDef="let row">{{row.createdTime | date:'short'}}</td>
     </ng-container>
 
     <!-- Developer Column -->
     <ng-container matColumnDef="developer">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortColumn('developer')">Developer</th>
+      <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortColumn('developer')">Developer</th>
       <td mat-cell *matCellDef="let row">{{row.username}}</td>
     </ng-container>
 
     <!-- Details Column -->
     <ng-container matColumnDef="details">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Details</th>
+      <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header>Details</th>
       <td mat-cell *matCellDef="let row"><a id="inspectButton{{row.bId}}" routerLink="/bugreportapprove/{{row.bId}}">Inspect</a></td>
     </ng-container>
 

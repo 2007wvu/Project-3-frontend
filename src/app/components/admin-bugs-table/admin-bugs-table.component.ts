@@ -2,10 +2,12 @@ import {AfterViewInit, ChangeDetectorRef, Component, Input, OnInit, ViewChild} f
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import {MatTable, MatTableDataSource} from '@angular/material/table';
-import {merge, Observable, of as observableOf} from 'rxjs';
+// import {merge, Observable, of as observableOf} from 'rxjs';
+import {Observable} from 'rxjs';
+
 import BugReport from '../../models/BugReport';
-import {MatExpansionModule} from '@angular/material/expansion';
-import { report } from 'process';
+// import {MatExpansionModule} from '@angular/material/expansion';
+// import { report } from 'process';
 import Application from 'src/app/models/Application';
 import {ApiServiceService} from '../../services/api-service.service';
 
@@ -182,6 +184,7 @@ export class AdminBugsTableComponent implements AfterViewInit, OnInit {
 
       for(let report of this.bugReportsDisplay){
           let dateString = new Date(report.createdTime);
+          
           if(report.title.toLowerCase().includes(this.searchInput)){
             filteredReports.push(report);
           }else if(report.app.title.toLowerCase().includes(this.searchInput)){

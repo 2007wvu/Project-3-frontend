@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit,  ElementRef, ViewChild } from '@angular/core';
 import Client from '../../models/Client';
 import {ApiServiceService} from '../../services/api-service.service';
 import Solution from '../../models/Solution';
@@ -35,7 +35,6 @@ export class LoginMatComponent implements OnInit {
 
 
   async clientLogin()  {
-    const user = new Client();
     const username = this.username.nativeElement.value;
     const pass = this.password.nativeElement.value;
     this.client = await this.serv.clientLogin(username, pass);

@@ -23,6 +23,7 @@
 
 .buttonGroup {
     text-align: right;
+    padding-bottom: 1.5%;
 }
 
 .inputType {
@@ -118,7 +119,4 @@ td {
 }
 #reject-bug-button{
     margin-left: 85%;
-}
-.buttonGroup{
-    padding-bottom: 1.5%;
 }

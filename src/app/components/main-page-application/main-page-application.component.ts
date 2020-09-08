@@ -11,9 +11,9 @@ export class MainPageApplicationComponent implements OnInit {
 
   panelOpenState = false;
 
-  title: String = 'Cursed Pizza Online Ordering System App';
-  gitLink: String = 'http://github.com/wackywill/cpoos';
-  bugCount: Number = 1;
+  title: string = 'Cursed Pizza Online Ordering System App';
+  gitLink: string = 'http://github.com/wackywill/cpoos';
+  bugCount: number = 1;
   reports: BugReport[];
 
   @Input() application: Application;

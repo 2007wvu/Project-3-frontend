@@ -32,10 +32,10 @@ export class LoginMatComponent implements OnInit {
   shown = true;
   resetPasswordModal:boolean = false;
   resetPasswordEmail:string;
+  resetPasswordUsername:string;
   wrongEmail:boolean;
 
   ngOnInit(): void {
-
   }
 
 
@@ -86,6 +86,7 @@ export class LoginMatComponent implements OnInit {
     return newclient;
 
   }
+
   hideError() {
   this.shown = false;
   this.invalid = false;
@@ -101,7 +102,8 @@ export class LoginMatComponent implements OnInit {
 
   async resetPassword(){
     this.resetPasswordEmail = "nb231111@gmail.com";
-    const tempClient:Client[] = await this.http.get<Array<Client>>(`http://localhost:9111/clients?email=${this.resetPasswordEmail}`).toPromise();
+    this.resetPasswordUsername = "TheRaidman";
+    const tempClient:Client[] = await this.http.get<Array<Client>>(`http://localhost:9111/clients?username=${this.resetPasswordUsername}`).toPromise();
     if(tempClient === null){
       this.wrongEmail = true;
       return;
@@ -109,7 +111,7 @@ export class LoginMatComponent implements OnInit {
 
     console.log(tempClient);
     
-    const status = await this.serv.resetPassword(this.resetPasswordEmail);  
+    const status = await this.serv.resetPassword(this.resetPasswordEmail,this.resetPasswordUsername);  
     console.log(status);
     
     if(status > 199 && status < 400){
@@ -123,6 +125,6 @@ export class LoginMatComponent implements OnInit {
     this._snackBar.open(message, action, {
       duration: 4000,
     });
-
 }
+
 }

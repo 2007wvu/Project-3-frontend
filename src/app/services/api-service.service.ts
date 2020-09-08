@@ -146,10 +146,12 @@ export class ApiServiceService {
     return this.http.put<Client>(`${this.path}/clients`, client).toPromise();
   }
   //does not work
-  async resetPassword(requestEmail:string):Promise<number>{
+  async resetPassword(requestEmail:string,requestedUsername):Promise<number>{
 
+    //add username to this config
     let config = {
-      email: requestEmail
+      email: requestEmail,
+      username: requestedUsername
     }
 
     let request = {
@@ -158,13 +160,16 @@ export class ApiServiceService {
       body: JSON.stringify(config)
     };
 
-    const httpResponse = await fetch(`${this.path}/clients/${requestEmail}`,request);
+    const httpResponse = await fetch(`${this.path}/forgotPassword`,request);
     const status = await httpResponse.status;
     return status;
     
   }
 
+  async verifyEmail(username:string,email:string,key:string):Promise<Client>{
 
+    return null;
+  }
 
   //################ Start of Solution Section ###################
 

@@ -11,6 +11,7 @@ import { SolutionApprovalComponent } from './components/solution-approval/soluti
 import { ViewBugsPageComponent } from './components/view-bugs-page/view-bugs-page.component'
 import { LoginMatComponent } from './components/login-mat/login-mat.component';
 import { MetricsPageComponent } from './components/metrics-page/metrics-page.component';
+import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 
 const routes: Routes = [
   { path: 'adminbugs', component: AdminBugsComponent},
@@ -24,7 +25,9 @@ const routes: Routes = [
   { path: 'bugreportapprove/:id', component: BugReportViewComponent},
   { path: 'bugs', component : ViewBugsPageComponent },
   { path: 'metrics', component: MetricsPageComponent},
-  { path: '', component: LoginMatComponent}
+  { path: '', component: LoginMatComponent},
+  { path: 'resetPassword', component: PasswordResetComponent}
+
 ];
 
 @NgModule({

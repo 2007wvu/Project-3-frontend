@@ -20,27 +20,27 @@
         font-size:small;
     }
     .dot-data{
-        height: 80px;
-        width: 80px;
-        margin-left:10px;
-        margin-right:10px;
-        border-radius: 50%;
+        height: 125px;
+        width: 125px;
+         margin-left:-25px;
+         margin-right:-25px;
+        // border-radius: 70%;
         text-align: center;
-        line-height: 70px;
+        line-height: 125px;
         font-size:x-large;
-        // background-image: url("../../../assets/lady_bug_circle.png");
-        // background-size: 80px 80px;
+        background-image: url("../../../assets/lady_bug.png");
+        background-size: 125px 125px;
         
     }
-    #bugs-requested{
-        border: solid 5px rgb(255, 199, 136);
-    }
-    #bugs-resolved{
-        border:solid 5px rgb(78, 241, 233);
-    }
-    #bugs-unresolved{
-        border: solid 5px rgb(255, 117, 107);
-    }
+    // #bugs-requested{
+    //     border: solid 5px rgb(255, 199, 136);
+    // }
+    // #bugs-resolved{
+    //     border:solid 5px rgb(78, 241, 233);
+    // }
+    // #bugs-unresolved{
+    //     border: solid 5px rgb(255, 117, 107);
+    // }
 }
 
 .chart{

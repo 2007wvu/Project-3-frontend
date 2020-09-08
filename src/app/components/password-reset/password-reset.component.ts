@@ -51,7 +51,7 @@ export class PasswordResetComponent implements OnInit {
   }
 
   async checkKeyAndEmail(){
-    this.client = await this.api.verifyEmail(this.username, this.email,this.key);
+    this.client = await this.api.verifyAccount(this.username, this.email,this.key);
 
     if(this.client === null){
       alert("This is an invalid link.")

@@ -40,7 +40,7 @@ export class ApiServiceService {
   }
 
   getbugReportByClientUsername(username:string){
-    return this.http.get<BugReport[]>(this.path + `/bugreports/client/${username}`).toPromise();
+    return this.http.get<BugReport[]>(this.path + `/bugreports?username=${username}`).toPromise();
   }
 
   getbugReportByApp(id:number){
@@ -81,7 +81,7 @@ export class ApiServiceService {
   }
 
   getBugReportById(id:number) {
-    return this.http.get<BugReport>(`${this.path}/bugreports?id=${id}`).toPromise();
+    return this.http.get<BugReport>(`${this.path}/bugreports/${id}`).toPromise();
   }
 
   submitNewBugReport(bugReport: BugReport): Promise<BugReport>{
@@ -98,7 +98,7 @@ export class ApiServiceService {
     return this.http.get<Client>(this.path + `/clients/login?username=${username}&password=${pass}`).toPromise();
   }
   getClientByUserName(username: any): Promise<Client> {
-    return this.http.get<Client>(this.path + `/query/clients?username=${username}`).toPromise();
+    return this.http.get<Client>(this.path + `/clients?username=${username}`).toPromise();
   }
   async clientRegister(client: Client): Promise<Client> {
     return await this.http.post<Client>(this.path + `/clients`, client).toPromise();
@@ -112,19 +112,19 @@ export class ApiServiceService {
     return clients;
   }
 
-  async getClientBugReportCount() : Promise<number>{
-    const bugsCount: number = await this.http.get<number>(`${this.path}/bugreports/count`).toPromise();
-    return bugsCount;
-  }
+  // async getClientBugReportCount(id: number) : Promise<number>{
+  //   const bugsCount: number = await this.http.get<number>(`${this.path}/clients/${id}/bugreports?count=true`).toPromise();
+  //   return bugsCount;
+  // }
 
-  async getClientSolutionsCount(): Promise<number> {
-    const solsCount: number = await this.http.get<number>(`${this.path}/solutions/count`).toPromise();
-    return solsCount;
-  }
+  // async getClientSolutionsCount(id: number): Promise<number> {
+  //   const solsCount: number = await this.http.get<number>(`${this.path}/clients/${id}/solutions?count=true`).toPromise();
+  //   return solsCount;
+  // }
 
   // points displayed in profile page
   getPoints(id:number){
-    return this.http.get<number>(this.path + `/clients/points?id=${id}`).toPromise();
+    return this.http.get<number>(this.path + `/clients/${id}/points`).toPromise();
   }
   //to be set within the login function
   setLoggedClient(client: Client) {
@@ -166,9 +166,8 @@ export class ApiServiceService {
     
   }
 
-  async verifyEmail(username:string,email:string,key:string):Promise<Client>{
-
-    return null;
+  async verifyAccount(username:string,email:string,key:string):Promise<Client>{
+    return await this.http.get<Client>(`${this.path}/verifyAccount?username=${username}&email=${email}&key=${key}`).toPromise();
   }
 
   //################ Start of Solution Section ###################
@@ -186,17 +185,15 @@ export class ApiServiceService {
 
   //2. Get all Solutions by Bug Report ID
   getSolutionsByBugId(id:number) {
-    return this.http.get<Solution[]>(`${this.path}/solutions?bId=${id}`).toPromise();
-
+    return this.http.get<Solution[]>(`${this.path}/bugreports/${id}/solutions`).toPromise();
   }
 
   getSolutionById(id: number) {
-    return this.http.get<Solution>(`${this.path}/solutions?id=${id}`).toPromise();
+    return this.http.get<Solution>(`${this.path}/solutions/${id}`).toPromise();
   }
 
-
   getSolutionsByClientId(id:number) {
-    return this.http.get<Solution[]>(`${this.path}/solutions?cId=${id}`).toPromise();
+    return this.http.get<Solution[]>(`${this.path}/clients/${id}/solutions`).toPromise();
   }
 
   putSolution(solution:Solution) {
@@ -214,11 +211,11 @@ export class ApiServiceService {
   }
 
   getApplicationSolutions(appId:number): Promise<number>{
-    return this.http.get<number>(`${this.path}/applications/${appId}/solutions`).toPromise();
+    return this.http.get<number>(`${this.path}/applications/${appId}/solutions_count`).toPromise();
   }
 
   getApplicationUsers(appId:number): Promise<number>{
-    return this.http.get<number>(`${this.path}/applications/${appId}/clients`).toPromise();
+    return this.http.get<number>(`${this.path}/applications/${appId}/clients_count`).toPromise();
   }
 
   getApplicationAverageResolvedTime(appId:number): Promise<number>{
@@ -235,11 +232,11 @@ export class ApiServiceService {
 
   //################ Start of Leaderboard Section ###################
   getLeaderboardNames(): Promise<String[]>{
-    return this.http.get<String[]>(`${this.path}/clients/leaderboard/username`).toPromise();
+    return this.http.get<String[]>(`${this.path}/leaderboard/usernames`).toPromise();
   }
 
   getLeaderboardPoints(): Promise<number[]>{
-    return this.http.get<number[]>(`${this.path}/clients/leaderboard/points`).toPromise();
+    return this.http.get<number[]>(`${this.path}/leaderboard/points`).toPromise();
   }
 
 }

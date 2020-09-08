@@ -42,11 +42,11 @@
 </mat-card>
 <table mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+        <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
         <td mat-cell *matCellDef="let solution">{{solution.title}}</td>
     </ng-container>
     <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Solution</th>
+        <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header>Solution</th>
         <td class="solution" mat-cell *matCellDef="let solution">
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
@@ -57,15 +57,15 @@
         </td>
     </ng-container>
     <ng-container matColumnDef="timeSubmitted">
-        <th class="timeSubmitted" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+        <th scope="col" class="timeSubmitted" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
         <td class="timeSubmitted" mat-cell *matCellDef="let solution">{{solution.timeSubmitted | date:'short'}}</td>
     </ng-container>
     <ng-container matColumnDef="solver">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Solver</th>
+        <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header>Solver</th>
         <td mat-cell *matCellDef="let solution">{{solution.client.username}}</td>
     </ng-container>
     <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+        <th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
         <td mat-cell *matCellDef="let solution">
             <mat-form-field>
             <mat-select (selectionChange)="updateSolution(solution)" [(value)]="solution.status">

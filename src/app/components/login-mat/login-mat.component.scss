@@ -399,3 +399,17 @@ mat-card{
   }
 
 }
+
+.row-divider-container{
+  width:100%;
+  margin-top:8px;
+  display:flex;
+  justify-content: center;
+  margin-bottom:10px;
+  .row-divider{
+    width:100%;
+    height:5px;
+  }
+ 
+  
+}

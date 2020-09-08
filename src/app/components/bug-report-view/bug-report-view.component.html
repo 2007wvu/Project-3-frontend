@@ -147,25 +147,22 @@
                                 <mat-expansion-panel-header>
                                     
                                     <mat-panel-title>
-                                        
                                         <table style="width: 100%;">
-                                            <thead style="width: 100%; ">
-                                                <td style="width:30%; font-size: .9em; " id="solution{{solution.id}}">
-                                                    {{solution.title}}
-                                                </td>
-                                                <td style="width:30%;font-size:  .9em;;" id="solution{{solution.id}}stat">
-                                                    {{solution.status }}
-                                                </td>
-                                                
-                                                <td
-                                                style="width:30%;font-size: .9em;text-align:left;padding-left:20px;">
-                                                {{solution.timeSubmitted | date:'short'}}
-                                            </td>
+                                            <th scope="col" style="width:30%; font-size: .9em; " id="solution{{solution.id}}">
+                                                {{solution.title}}
+                                            </th>
+                                            <th scope="col" style="width:30%;font-size:  .9em;;" id="solution{{solution.id}}stat">
+                                                {{solution.status }}
+                                            </th>
                                             
-                                            <td style="width:30%;font-size:  .9em; text-align:center;  ">
-                                                {{solution.client.username}}
-                                            </td>
-                                        </thead>
+                                            <th scope="col"
+                                            style="width:30%;font-size: .9em;text-align:left;padding-left:20px;">
+                                            {{solution.timeSubmitted | date:'short'}}
+                                        </th>
+                                        
+                                        <th scope="col" style="width:30%;font-size:  .9em; text-align:center;  ">
+                                            {{solution.client.username}}
+                                        </th>
                                     </table>
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
@@ -206,7 +203,7 @@
 <form  class="container" *ngIf="br.status==='Unresolved'">
     <h1 id = "postSolutionsTitle" class="titleH1 col-sm-3">Post new Solution</h1>
     <div class="form-group row">
-
+        
         <label class="col-sm-2 form-label">Title: <strong style="color: firebrick;">*</strong> </label>
         
         <input type="text" id="txtSolTitle" ngModel name="txtSolTitle" #txtSolTitle [(ngModel)]="SolTitle"

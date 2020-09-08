@@ -166,9 +166,8 @@ export class ApiServiceService {
     
   }
 
-  async verifyEmail(username:string,email:string,key:string):Promise<Client>{
-
-    return null;
+  async verifyAccount(username:string,email:string,key:string):Promise<Client>{
+    return await this.http.get<Client>(`${this.path}/verifyAccount?username=${username}&email=${email}&key=${key}`).toPromise();
   }
 
   //################ Start of Solution Section ###################

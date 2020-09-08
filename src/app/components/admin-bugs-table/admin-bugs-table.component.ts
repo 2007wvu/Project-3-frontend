@@ -178,7 +178,8 @@ export class AdminBugsTableComponent implements AfterViewInit, OnInit {
 
     if(this.searchInput !== ""){
       
-      this.searchInput.toLowerCase();
+      this.searchInput = this.searchInput.toLowerCase();
+
       for(let report of this.bugReportsDisplay){
           let dateString = new Date(report.createdTime);
           if(report.title.toLowerCase().includes(this.searchInput)){

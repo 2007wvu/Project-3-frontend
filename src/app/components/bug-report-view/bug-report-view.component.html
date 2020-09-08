@@ -2,16 +2,16 @@
     <div class="container">
         <ng-container *ngIf="br!=null">
             <h1 id = "bugTitleReport" class="titleH1  col  "> Bug Report #{{br.bId}}</h1>
-
+            
             <div class="form-group row">
-              
+                
                 <label for="txttitle" class="col-sm-2 form-label">Bug Title:</label>
                 <label id="bugTitle" class="col-sm-2  "> {{br.title}} </label>
                 <label for="txtstatus" class="col-sm-2  form-label">&nbsp;Bug Status:</label>
                 <label id="txtstatus" class="col-sm-2 f "> {{br.status}} </label>
-
+                
             </div>
-    
+            
             <div class="form-group row">
                 <label for="lblapplication" class="col-sm-2  form-label">Application:</label>
                 <ng-container *ngIf="br.app !=null">
@@ -19,213 +19,213 @@
                 </ng-container>
                 <label for="lbllocation" class="col-sm-2  form-label">&nbsp;Location:</label>
                 <label id="lbllocation" class="col-sm-2 "> {{br.location}}</label>
-    
+                
             </div>
             <div class="form-group row">
                 <label for="ddlseverity" class="col-sm-2  form-label">Severity: </label>
                 <label *ngIf="!isAdmin || (br.status==='Resolved')" id="txtstatus" class="col-sm-2 f "> {{br.severity}} </label>
                 <select #ddlseverity id="ddlseverity" name="ddlseverity" [(ngModel)]="br.severity"
-                    (change)="setSeverity($event)" class="col-sm-2   mr-sm-2" *ngIf="isAdmin && !(br.status==='Resolved')">
-                    <option value="" disabled>Choose Severity</option>   
-                    <option value="Low">Low</option>    
-                    <option value="Medium">Medium</option>                                          
-                    <option value="High">High</option>                                   
-                </select>
-              
-                <label for="ddlpriority" class="col-sm-2  form-label">&nbsp;Priority: </label>
-                <label *ngIf="(br.status==='Resolved') || !isAdmin" id="txtstatus" class="col-sm-2 f "> {{br.priority}} </label>
-                <select #ddlpriority id="ddlpriority" name="ddlpriority" [(ngModel)]="br.priority"
-                    (change)="setPriority($event)" class="col-sm-2   mr-sm-2" *ngIf="isAdmin && !(br.status==='Resolved')">
-                    <option value="" disabled>Choose Priority</option>   
-                    <option value="Low">Low</option>    
-                    <option value="Medium">Medium</option>                                          
-                    <option value="High">High</option>
-                </select>
-    
-            </div>
-            <div class="form-group row">
-                <label for="txtdate" class="col-sm-2  form-label">Creation Time:</label>
-    
-                <label type="datetime" readonly class="col-sm-2  " id="txtreporter">
-                    {{br.createdTime|date:'medium'}} </label>
-    
-                <label for="txtreporter" class="col-sm-2  form-label">&nbsp;Reporter:</label>
-    
-                <label class="col-sm-2 " id="txtreporter">{{br.username}} </label>
-    
-            </div>
-            <div class="form-group row">
-              
-                <label for="lblapprovedTime" class="col-sm-2  form-label" *ngIf="br.approvedTime!=0">Approved Time: </label>
-
-                <label id="lblapprovedTime" class="col-sm-2    " *ngIf="br.approvedTime!=0" >{{br.approvedTime|date:'medium'}}</label>
-
-                <label for="lblresolvedTime" class="col-sm-2  form-label" *ngIf="(br.status==='Resolved')">Resolved Time: </label>
-                <label id="lblresolvedTime" class="col-sm-2   " *ngIf="(br.status==='Resolved')">{{br.resolvedTime|date:'medium'}}</label>
-                
-                <label for="txtreporter" class="col-sm-1   form-label" *ngIf="!(br.status==='Resolved')">Points:</label>
-                <div id="point-input-container">
+                (change)="setSeverity($event)" class="col-sm-2   mr-sm-2" *ngIf="isAdmin && !(br.status==='Resolved')">
+                <option value="" disabled>Choose Severity</option>   
+                <option value="Low">Low</option>    
+                <option value="Medium">Medium</option>                                          
+                <option value="High">High</option>                                   
+            </select>
+            
+            <label for="ddlpriority" class="col-sm-2  form-label">&nbsp;Priority: </label>
+            <label *ngIf="(br.status==='Resolved') || !isAdmin" id="txtstatus" class="col-sm-2 f "> {{br.priority}} </label>
+            <select #ddlpriority id="ddlpriority" name="ddlpriority" [(ngModel)]="br.priority"
+            (change)="setPriority($event)" class="col-sm-2   mr-sm-2" *ngIf="isAdmin && !(br.status==='Resolved')">
+            <option value="" disabled>Choose Priority</option>   
+            <option value="Low">Low</option>    
+            <option value="Medium">Medium</option>                                          
+            <option value="High">High</option>
+        </select>
+        
+    </div>
+    <div class="form-group row">
+        <label for="txtdate" class="col-sm-2  form-label">Creation Time:</label>
+        
+        <label type="datetime" readonly class="col-sm-2  " id="txtreporter">
+            {{br.createdTime|date:'medium'}} </label>
+            
+            <label for="txtreporter" class="col-sm-2  form-label">&nbsp;Reporter:</label>
+            
+            <label class="col-sm-2 " id="txtreporter">{{br.username}} </label>
+            
+        </div>
+        <div class="form-group row">
+            
+            <label for="lblapprovedTime" class="col-sm-2  form-label" *ngIf="br.approvedTime!=0">Approved Time: </label>
+            
+            <label id="lblapprovedTime" class="col-sm-2    " *ngIf="br.approvedTime!=0" >{{br.approvedTime|date:'medium'}}</label>
+            
+            <label for="lblresolvedTime" class="col-sm-2  form-label" *ngIf="(br.status==='Resolved')">Resolved Time: </label>
+            <label id="lblresolvedTime" class="col-sm-2   " *ngIf="(br.status==='Resolved')">{{br.resolvedTime|date:'medium'}}</label>
+            
+            <label for="txtreporter" class="col-sm-1   form-label" *ngIf="!(br.status==='Resolved')">Points:</label>
+            <div id="point-input-container">
                 <label class="col-sm-1   " id="point-label" *ngIf="!(br.status==='Resolved') && !isAdmin">{{br.pointValue}}</label>
                 <input id="txtpoints" [(ngModel)]="br.pointValue"  type="number"
-                    class="col-sm-2" *ngIf="isAdmin && !(br.status==='Resolved')">
-                </div>
-
+                class="col-sm-2" *ngIf="isAdmin && !(br.status==='Resolved')">
             </div>
-            <div class="form-group row">
-                <label for="txtreporter" class="col-sm-1   form-label" *ngIf="(br.status==='Resolved')">Points:</label>
-
-                <label class="col-sm-1   " id="point-label" *ngIf="(br.status==='Resolved')">{{br.pointValue}}</label>
-            </div>
-            <div class="form-group row">
-
-                <label for="txtdescription" class="col-sm-2 form-label"> Description:</label>
-
-                <div id="txtdescription" readonly class="col-sm-8 form-control  textareaDisabled"
-                    [innerHtml]="br.description"> </div>
-
-            </div>
-
-
-
-            <div class="form-group row">
-
-                <label for="txtreproduceSteps" class="col-sm-2 form-label">Reproduce Steps:</label>
-
-                <div id="txtreproduceSteps" readonly class="col-sm-8 form-control  textareaDisabled"
-                    [innerHtml]="br.repSteps"> </div>
-
-            </div>
-            <div class="buttonGroup" *ngIf="isAdmin && br.status==='Requested'">
-                <button type="button"  class="btn btn-success" id = "approve-bug-button" (click)="AcceptBug()">Approve </button>
-                <button type="button" class="btn btn-danger" id="reject-bug-button" (click)="RejectBug()">Reject</button>
-            </div>
-            <div class="form-group row">
-                <button id="resolve-bug-button" (click)="closeBug()" mat-raised-button color="warn" [disabled]="isAdmin && br.status !=='Unresolved'">Mark Bug as Resolved</button>
-                <button id="return-to-view-bugs" mat-raised-button routerLink="/bugs" color="warn" >Return to View Bugs</button>
-            </div>
-            <hr>
             
-            <div class="row">
-                <div class="col-12">
-
-                    <table mat-table [dataSource]="dataSource" matSort style="width:100%;margin-bottom: 10px;" *ngIf="!requested">
-
-                        <ng-container matColumnDef="description">
-
-                            <th *matHeaderCellDef>
-
-
-                                <table style="width: 100%;">
-                                    <thead>
-                                        <th class="col header " colspan="4">
-                                            <h2 id = "postedSolutionsTitle"> Posted Solution(s) </h2>
-                                        </th>
-                                    </thead>
-                                    <thead style="width: 100%;">
-                                        <th style="width:30%; padding-left: 20px;">
-                                            Title
-                                        </th>
-                                        <th style="width:30%;">
-                                            Status
-                                        </th>
-
-                                        <th style="width:30%;text-align:start;  ">
-                                            Time Submitted
-                                        </th>
-
-                                        <th style="width:30%; text-align:start; ">
-                                            Solver
-                                        </th>
-                                    </thead>
-                                </table>
-                            </th>
-
-
-                            <td class="solution" *matCellDef="let solution">
-
-                                <mat-expansion-panel>
-                                    <mat-expansion-panel-header>
-
-                                        <mat-panel-title>
-
-                                            <table style="width: 100%;">
-                                                <thead style="width: 100%; ">
-                                                    <td style="width:30%; font-size: .9em; " id="solution{{solution.id}}">
-                                                        {{solution.title}}
-                                                    </td>
-                                                    <td style="width:30%;font-size:  .9em;;" id="solution{{solution.id}}stat">
-                                                        {{solution.status }}
-                                                    </td>
-
-                                                    <td
-                                                        style="width:30%;font-size: .9em;text-align:left;padding-left:20px;">
-                                                        {{solution.timeSubmitted | date:'short'}}
-                                                    </td>
-
-                                                    <td style="width:30%;font-size:  .9em; text-align:center;  ">
-                                                        {{solution.client.username}}
-                                                    </td>
-                                                </thead>
-                                            </table>
-                                        </mat-panel-title>
-                                    </mat-expansion-panel-header>
-
-
-
-                                    <div class="form-group row">
-
-                                        <label for="divDescription" class="col-sm-1 form-label"
-                                            style="font-weight: bold; margin-right: 5px;">Description:</label>
-
-                                        <div id="divDescription" readonly
-                                            class="col-sm-8 form-control textareaDisabled">{{solution.description}}
-                                        </div>
-                                        <div id="solutions-dropdown-container">
-                                            <mat-form-field>
-                                                <mat-select (selectionChange)="updateSolution(solution)" id="solutStat" [(value)]="solution.status">
-                                                    <mat-option value="Pending" >Pending</mat-option>
-                                                    <mat-option value="Accepted" >Accepted</mat-option>
-                                                    <mat-option value="Rejected" >Rejected</mat-option>
-                                                </mat-select>
-                                            </mat-form-field>
-                                        </div>
+        </div>
+        <div class="form-group row">
+            <label for="txtreporter" class="col-sm-1   form-label" *ngIf="(br.status==='Resolved')">Points:</label>
+            
+            <label class="col-sm-1   " id="point-label" *ngIf="(br.status==='Resolved')">{{br.pointValue}}</label>
+        </div>
+        <div class="form-group row">
+            
+            <label for="txtdescription" class="col-sm-2 form-label"> Description:</label>
+            
+            <div id="txtdescription" readonly class="col-sm-8 form-control  textareaDisabled"
+            [innerHtml]="br.description"> </div>
+            
+        </div>
+        
+        
+        
+        <div class="form-group row">
+            
+            <label for="txtreproduceSteps" class="col-sm-2 form-label">Reproduce Steps:</label>
+            
+            <div id="txtreproduceSteps" readonly class="col-sm-8 form-control  textareaDisabled"
+            [innerHtml]="br.repSteps"> </div>
+            
+        </div>
+        <div class="buttonGroup" *ngIf="isAdmin && br.status==='Requested'">
+            <button type="button"  class="btn btn-success" id = "approve-bug-button" (click)="AcceptBug()">Approve </button>
+            <button type="button" class="btn btn-danger" id="reject-bug-button" (click)="RejectBug()">Reject</button>
+        </div>
+        <div class="form-group row">
+            <button id="resolve-bug-button" (click)="closeBug()" mat-raised-button color="warn" [disabled]="isAdmin && br.status !=='Unresolved'">Mark Bug as Resolved</button>
+            <button id="return-to-view-bugs" mat-raised-button routerLink="/bugs" color="warn" >Return to View Bugs</button>
+        </div>
+        <hr>
+        
+        <div class="row">
+            <div class="col-12">
+                
+                <table mat-table [dataSource]="dataSource" matSort style="width:100%;margin-bottom: 10px;" *ngIf="!requested">
+                    
+                    <ng-container matColumnDef="description">
+                        
+                        <th scope="col" *matHeaderCellDef>
+                            
+                            
+                            <table style="width: 100%;">
+                                <thead>
+                                    <th scope="col" class="col header " colspan="4">
+                                        <h2 id = "postedSolutionsTitle"> Posted Solution(s) </h2>
+                                    </th>
+                                </thead>
+                                <thead style="width: 100%;">
+                                    <th scope="col" style="width:30%; padding-left: 20px;">
+                                        Title
+                                    </th>
+                                    <th scope="col" style="width:30%;">
+                                        Status
+                                    </th>
+                                    
+                                    <th scope="col" style="width:30%;text-align:start;  ">
+                                        Time Submitted
+                                    </th>
+                                    
+                                    <th scope="col" style="width:30%; text-align:start; ">
+                                        Solver
+                                    </th>
+                                </thead>
+                            </table>
+                        </th>
+                        
+                        
+                        <td class="solution" *matCellDef="let solution">
+                            
+                            <mat-expansion-panel>
+                                <mat-expansion-panel-header>
+                                    
+                                    <mat-panel-title>
+                                        
+                                        <table style="width: 100%;">
+                                            <thead style="width: 100%; ">
+                                                <td style="width:30%; font-size: .9em; " id="solution{{solution.id}}">
+                                                    {{solution.title}}
+                                                </td>
+                                                <td style="width:30%;font-size:  .9em;;" id="solution{{solution.id}}stat">
+                                                    {{solution.status }}
+                                                </td>
+                                                
+                                                <td
+                                                style="width:30%;font-size: .9em;text-align:left;padding-left:20px;">
+                                                {{solution.timeSubmitted | date:'short'}}
+                                            </td>
                                             
-                                    </div>
-                                </mat-expansion-panel>
-                            </td>
-                        </ng-container>
-                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-                    </table>
-
-                </div>
-            </div>
-
-        </ng-container>
+                                            <td style="width:30%;font-size:  .9em; text-align:center;  ">
+                                                {{solution.client.username}}
+                                            </td>
+                                        </thead>
+                                    </table>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            
+                            
+                            
+                            <div class="form-group row">
+                                
+                                <label for="divDescription" class="col-sm-1 form-label"
+                                style="font-weight: bold; margin-right: 5px;">Description:</label>
+                                
+                                <div id="divDescription" readonly
+                                class="col-sm-8 form-control textareaDisabled">{{solution.description}}
+                            </div>
+                            <div id="solutions-dropdown-container">
+                                <mat-form-field>
+                                    <mat-select (selectionChange)="updateSolution(solution)" id="solutStat" [(value)]="solution.status">
+                                        <mat-option value="Pending" >Pending</mat-option>
+                                        <mat-option value="Accepted" >Accepted</mat-option>
+                                        <mat-option value="Rejected" >Rejected</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            
+                        </div>
+                    </mat-expansion-panel>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+        
     </div>
-    <form class="container" *ngIf="br.status==='Unresolved'">
-        <h1 id = "postSolutionsTitle" class="titleH1 col-sm-3">Post new Solution</h1>
-        <div class="form-group row">
+</div>
 
-            <label class="col-sm-2 form-label">Title: <b style="color: firebrick;">*</b> </label>
+</ng-container>
+</div>
+<form  class="container" *ngIf="br.status==='Unresolved'">
+    <h1 id = "postSolutionsTitle" class="titleH1 col-sm-3">Post new Solution</h1>
+    <div class="form-group row">
 
-            <input type="text" id="txtSolTitle" ngModel name="txtSolTitle" #txtSolTitle [(ngModel)]="SolTitle"
-                required minlength="6" maxlength="2000" class="col-sm-6 form-control" placeholder="Solution title">
-
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-2 form-label">Description: <b style="color: firebrick;">*</b></label>
-            <textarea id="txtSolDescribtion" required minlength="6" ngModel name="txtSolDescribtion"
-                #txtSolDescribtion  [(ngModel)]="SolDescription" placeholder="Solution Description"
-                minlength="6" class="col-sm-8 form-control textarea"> </textarea>
-        </div>
-
-        <div class="buttonGroup">
-            <button id = "cancelButton" type="reset" class="btn btn-secondary"  [disabled]=" !(br.status==='Unresolved') " >Cancel</button>
-            <span> &nbsp;&nbsp; </span>
-            <button id = "submitButton" type="button"   (click)="postSolution()" class="btn btn-success"  [disabled]=" !(br.status==='Unresolved') ">Submit</button>
-        </div>
-
-        <br>
-    </form>
+        <label class="col-sm-2 form-label">Title: <strong style="color: firebrick;">*</strong> </label>
+        
+        <input type="text" id="txtSolTitle" ngModel name="txtSolTitle" #txtSolTitle [(ngModel)]="SolTitle"
+        required minlength="6" maxlength="2000" class="col-sm-6 form-control" placeholder="Solution title">
+        
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 form-label">Description: <strong style="color: firebrick;">*</strong></label>
+        <textarea id="txtSolDescribtion" required minlength="6" ngModel name="txtSolDescribtion"
+        #txtSolDescribtion  [(ngModel)]="SolDescription" placeholder="Solution Description"
+        minlength="6" class="col-sm-8 form-control textarea"> </textarea>
+    </div>
+    
+    <div class="buttonGroup">
+        <button id = "cancelButton" type="reset" class="btn btn-secondary"  [disabled]=" !(br.status==='Unresolved') " >Cancel</button>
+        <span> &nbsp;&nbsp; </span>
+        <button id = "submitButton" type="button"   (click)="postSolution()" class="btn btn-success"  [disabled]=" !(br.status==='Unresolved') ">Submit</button>
+    </div>
+    
+    <br>
+</form>
 </ng-container>

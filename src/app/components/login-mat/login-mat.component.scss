@@ -321,7 +321,7 @@ mat-card{
           vertical-align: bottom;
           text-align: inherit;
           overflow: visible;
-          &:focus ~ span{
+          &:valid ~ span{
             top:-0.84375em;
             padding-top: 0.84375em;
             label{

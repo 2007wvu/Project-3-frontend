@@ -1,17 +1,11 @@
 import { environment } from './../../environments/environment';
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-//  schaud
-// import {BugReport} from 'src/app/models/BugReport';
-// import {Application} from 'src/app/models/Application';
-
 import Application from 'src/app/models/Application';
 import BugReport from 'src/app/models/BugReport';
 import Client from '../models/Client';
 
 import Solution from '../models/Solution';
-import { config } from 'process';
 
 @Injectable({
   providedIn: 'root'
@@ -161,7 +155,7 @@ export class ApiServiceService {
     };
 
     const httpResponse = await fetch(`${this.path}/forgotPassword`,request);
-    const status = await httpResponse.status;
+    const status = httpResponse.status;
     return status;
     
   }

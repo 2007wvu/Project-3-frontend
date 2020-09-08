@@ -19,6 +19,7 @@ mat-card {
   width: 30%;
   margin: 10% auto;
   border-radius: 8px;
+  min-width: 353px;
 }
 mat-form-field, mat-checkbox {
   width: 80%;
@@ -30,7 +31,6 @@ mat-card-content {
 }
 
 .login-button {
-  margin-top: 20px;
   display: block;
   width: 80%;
   margin: 20px auto;
@@ -94,10 +94,6 @@ mat-card-content {
 
 mat-checkbox{
   padding-top: 10px;
-}
-
-mat-card{
-  min-width: 353px;
 }
 
 #modalBtnContainer{
@@ -308,7 +304,6 @@ mat-card{
         input{
           caret-color: #212121;
           animation: cdk-text-field-autofill-end 0s 1ms;
-          margin-top: -0.0625em;
           font: inherit;
           background: transparent;
           color: currentColor;

@@ -68,6 +68,9 @@
 
 
           </form>
+          <div id="modalBtnContainer">
+            <button id="modalBtn" (click)="openResetPassModal()"><span id="modalSpan">Reset Password</span></button>
+          </div>
         </mat-card-content>
       </mat-tab>
       <mat-tab id = "registerTab" label="Register">
@@ -189,4 +192,113 @@
     </mat-tab-group>
   </mat-card>
 </div>
-<!--</div>-->
+
+<div *ngIf ="resetPasswordModal" class="modal">
+  <div class="modal-content">
+      <div class="modal-header">
+          <span (click)="closeResetPasswordModal()" class="close">&times;</span>
+      </div>
+      <div class="modal-body-container">
+          <div class="modal-body">
+              <div class="modal-body-wrap">
+                  <div class="body-column">
+                      <div class="body-column-wrap">
+                        <div class="email-input-container">
+                          <div class="email-input">
+                            <div class="email-input-header">
+                                <div class="email-input-input">
+                                    <input name="usernameInput" type="text" required>
+                                    <span>
+                                        <label>
+                                            <span>Username</span>
+                                        </label>
+                                    </span>
+                                </div>
+                                <div class = "email-input-icon">
+                                  <mat-icon>person_outline</mat-icon>
+                                </div>
+                            </div>
+                            <div class="email-input-footer">
+                              <span></span>
+                            </div>
+                            <div>
+                              <div>
+                                <div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row-divider-container"><div class="row-divider"></div></div>
+                        <div class="email-input-container">
+                          <div class="email-input">
+                            <div class="email-input-header">
+                                <div class="email-input-input">
+                                    <input name="emailInput" type="text" required>
+                                    <span>
+                                        <label>
+                                            <span>Email</span>
+                                        </label>
+                                    </span>
+                                </div>
+                                <div class = "email-input-icon">
+                                  <mat-icon>mail_outline</mat-icon>
+                                </div>
+                            </div>
+                            <div class="email-input-footer">
+                              <span></span>
+                            </div>
+                            <div>
+                              <div>
+                                <div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="email-input-container">
+                          <div class="email-input">
+                            <div class="email-input-header">
+                                <div class="email-input-input">
+                                    <input name="confrimEmailInput" type="text" required>
+                                    <span>
+                                        <label>
+                                            <span>Confirm Email</span>
+                                        </label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="email-input-footer">
+                              <span></span>
+                            </div>
+                            <div>
+                              <div>
+                                <div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </div>    
+      </div>
+      <div class="modal-action-buttons">
+      <button class="modal-cancel-btn">
+          <div class="modal-btn-label-wrapper">
+              <div class="modal-btn-label">
+                  Cancel
+              </div>
+          </div>
+      </button>
+      <button class="modal-submit-btn" (click)="resetPassword()">
+          <div class="modal-btn-label-wrapper">
+              <div class="modal-btn-label">
+                  Reset Password
+              </div>
+          </div>
+      </button>
+      </div>
+  </div>   
+</div>

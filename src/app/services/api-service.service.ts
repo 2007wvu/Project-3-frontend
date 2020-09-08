@@ -1,11 +1,6 @@
 import { environment } from './../../environments/environment';
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-//  schaud
-// import {BugReport} from 'src/app/models/BugReport';
-// import {Application} from 'src/app/models/Application';
-
 import Application from 'src/app/models/Application';
 import BugReport from 'src/app/models/BugReport';
 import Client from '../models/Client';
@@ -145,12 +140,29 @@ export class ApiServiceService {
     return this.http.put<Client>(`${this.path}/clients`, client).toPromise();
   }
   //does not work
-  resetPassword(email:string):Promise<any>{
-    return this.http.post(`${this.path}/resetpassword/${email}`, email).toPromise();
+  async resetPassword(requestEmail:string,requestedUsername):Promise<number>{
 
+    //add username to this config
+    let config = {
+      email: requestEmail,
+      username: requestedUsername
+    }
+
+    let request = {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(config)
+    };
+
+    const httpResponse = await fetch(`${this.path}/forgotPassword`,request);
+    const status = httpResponse.status;
+    return status;
+    
   }
 
-
+  async verifyAccount(username:string,email:string,key:string):Promise<Client>{
+    return await this.http.get<Client>(`${this.path}/verifyAccount?username=${username}&email=${email}&key=${key}`).toPromise();
+  }
 
   //################ Start of Solution Section ###################
 

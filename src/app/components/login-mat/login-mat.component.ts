@@ -2,15 +2,17 @@ import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angula
 import Client from '../../models/Client';
 import {ApiServiceService} from '../../services/api-service.service';
 import Solution from '../../models/Solution';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login-mat',
   templateUrl: './login-mat.component.html',
-  styleUrls: ['./login-mat.component.css']
+  styleUrls: ['./login-mat.component.scss']
 })
 export class LoginMatComponent implements OnInit {
 
-  constructor(private serv: ApiServiceService) { }
+  constructor(private serv: ApiServiceService, private http: HttpClient,private _snackBar:MatSnackBar) { }
 
   client = new Client();
 
@@ -28,6 +30,9 @@ export class LoginMatComponent implements OnInit {
   status = 'Enable';
   invalid: boolean;
   shown = true;
+  resetPasswordModal:boolean = false;
+  resetPasswordEmail:string;
+  wrongEmail:boolean;
 
   ngOnInit(): void {
 
@@ -85,4 +90,39 @@ export class LoginMatComponent implements OnInit {
   this.shown = false;
   this.invalid = false;
   }
+
+  openResetPassModal(){
+    this.resetPasswordModal = true;
+  }
+
+  closeResetPasswordModal(){
+    this.resetPasswordModal = false;
+  }
+
+  async resetPassword(){
+    this.resetPasswordEmail = "nb231111@gmail.com";
+    const tempClient:Client[] = await this.http.get<Array<Client>>(`http://localhost:9111/clients?email=${this.resetPasswordEmail}`).toPromise();
+    if(tempClient === null){
+      this.wrongEmail = true;
+      return;
+    }
+
+    console.log(tempClient);
+    
+    const status = await this.serv.resetPassword(this.resetPasswordEmail);  
+    console.log(status);
+    
+    if(status > 199 && status < 400){
+      this.openSnackBar(`Email was sent succesfully!`,"");
+    }else{
+      alert("Email failed to send!")
+    }
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 4000,
+    });
+
+}
 }

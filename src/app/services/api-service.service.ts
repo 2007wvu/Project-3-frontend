@@ -11,6 +11,7 @@ import BugReport from 'src/app/models/BugReport';
 import Client from '../models/Client';
 
 import Solution from '../models/Solution';
+import { config } from 'process';
 
 @Injectable({
   providedIn: 'root'
@@ -145,9 +146,22 @@ export class ApiServiceService {
     return this.http.put<Client>(`${this.path}/clients`, client).toPromise();
   }
   //does not work
-  resetPassword(email:string):Promise<any>{
-    return this.http.post(`${this.path}/resetpassword/${email}`, email).toPromise();
+  async resetPassword(requestEmail:string):Promise<number>{
 
+    let config = {
+      email: requestEmail
+    }
+
+    let request = {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(config)
+    };
+
+    const httpResponse = await fetch(`${this.path}/clients/${requestEmail}`,request);
+    const status = await httpResponse.status;
+    return status;
+    
   }
 
 

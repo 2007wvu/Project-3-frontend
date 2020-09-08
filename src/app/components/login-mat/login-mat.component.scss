@@ -137,7 +137,6 @@ mat-checkbox{
   flex-direction: column;
   margin: 15px;
   max-height: 80vh;
-  min-width: 0;
   z-index: 800;
   text-align: left;
   width: 30vw;
@@ -148,7 +147,8 @@ mat-checkbox{
   padding: 30px;
   position: relative;
   animation-name: animatesize;
-  animation-duration: .5s
+  animation-duration: .5s;
+  min-width: 400px;
 }
 @keyframes animatesize {
   from {

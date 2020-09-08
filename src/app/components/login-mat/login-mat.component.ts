@@ -103,9 +103,14 @@ export class LoginMatComponent implements OnInit {
   }
 
   async resetPassword(){
+    if(this.resetPasswordEmail.value !== this.resetPasswordConfirmEmail.value){
+      alert("Emails do not match!")
+      return;
+    }
 
     const tempClient:Client[] = await this.http.get<Array<Client>>(`http://localhost:9111/clients?username=${this.resetPasswordUsername.value}`).toPromise();
     if(tempClient === null){
+      alert("Information is not valid!")
       this.wrongEmail = true;
       return;
     }

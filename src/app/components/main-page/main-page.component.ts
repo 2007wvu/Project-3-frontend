@@ -1,8 +1,6 @@
-import { Component, Injectable, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from '../../services/api-service.service';
 import { Application } from 'src/app/models/Application';
-import { OverlayContainer} from '@angular/cdk/overlay';
 import BugReport from 'src/app/models/BugReport';
 
 @Component({
@@ -11,21 +9,21 @@ import BugReport from 'src/app/models/BugReport';
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit {
-
+  
   applications: Array<Application> = [];
   bugReports: BugReport[];
   overlayContainer;
   selectedApp:Application;
   componentCssClass;
-
+  
   constructor(private apiservice: ApiServiceService) { }
-
+  
   ngOnInit(): void {
     this.applications = [];
     this.getApplications();
     
   }
-
+  
   async getApplications(): Promise<any> {
     let aList: Array<Application> = await this.apiservice.getApplications();
     this.applications = aList;
@@ -33,13 +31,13 @@ export class MainPageComponent implements OnInit {
     this.bugReports = this.selectedApp.reports;
     this.getOpenReports(this.bugReports)
   }
-
+  
   selectChangeHandler (event: any) {
     //update the ui
     this.bugReports = this.selectedApp.reports;
     this.getOpenReports(this.bugReports)
   }
-
+  
   getOpenReports(reports){
     const holder: BugReport[] = reports;
     const returner: BugReport[] = [];

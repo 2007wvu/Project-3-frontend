@@ -9,15 +9,15 @@ import { BugReport } from 'src/app/models/BugReport';
 export class MainPageBugComponent implements OnInit {
 
   id:number = 0;
-  title: String = 'Can\'t resolve promise';
-  status: String = 'Unresolved';
-  priority: String = '';
-  severity: String = '';
-  pointValue: Number = 500;
-  username: String = 'WackyWill';
+  title: string = 'Can\'t resolve promise';
+  status: string = 'Unresolved';
+  priority: string = '';
+  severity: string = '';
+  pointValue: number = 500;
+  username: string = 'WackyWill';
   dateApproved: number = 10;
-  description: String = 'This is a description for my bug. There are many other bugs like it, but this one\'s mine.';
-  repSteps: String = 'First run the page. Try to add 20 pizzas. Place order. It should return the list of objects but I\'m getting a promise.';
+  description: string = 'This is a description for my bug. There are many other bugs like it, but this one\'s mine.';
+  repSteps: string = 'First run the page. Try to add 20 pizzas. Place order. It should return the list of objects but I\'m getting a promise.';
 
   @Input() bugReport:BugReport;
 

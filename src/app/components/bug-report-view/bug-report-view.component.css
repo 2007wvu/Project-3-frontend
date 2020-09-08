@@ -30,7 +30,6 @@
 }
 
 .textarea {
-    overflow: scroll;
     overflow-y: scroll;
     overflow-x: scroll;
     overflow: -moz-scrollbars-vertical;
@@ -42,7 +41,6 @@
 }
 
 .textareaDisabled:read-only {
-    overflow: scroll;
     overflow-y: scroll;
     overflow-x: scroll;
     overflow: -moz-scrollbars-vertical;

@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'bugs', component : ViewBugsPageComponent },
   { path: 'metrics', component: MetricsPageComponent},
   { path: '', component: LoginMatComponent},
-  { path: 'resetPassword', component: PasswordResetComponent}
+  { path: 'resetpassword', component: PasswordResetComponent}
 
 ];
 

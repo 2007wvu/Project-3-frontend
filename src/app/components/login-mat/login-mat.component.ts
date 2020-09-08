@@ -4,6 +4,7 @@ import {ApiServiceService} from '../../services/api-service.service';
 import Solution from '../../models/Solution';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-login-mat',
@@ -31,8 +32,9 @@ export class LoginMatComponent implements OnInit {
   invalid: boolean;
   shown = true;
   resetPasswordModal:boolean = false;
-  resetPasswordEmail:string;
-  resetPasswordUsername:string;
+  resetPasswordEmail = new FormControl('');
+  resetPasswordConfirmEmail = new FormControl('');
+  resetPasswordUsername = new FormControl('');
   wrongEmail:boolean;
 
   ngOnInit(): void {
@@ -100,17 +102,21 @@ export class LoginMatComponent implements OnInit {
   }
 
   async resetPassword(){
-    this.resetPasswordEmail = "nb231111@gmail.com";
-    this.resetPasswordUsername = "TheRaidman";
-    const tempClient:Client[] = await this.http.get<Array<Client>>(`http://localhost:9111/clients?username=${this.resetPasswordUsername}`).toPromise();
+    if(this.resetPasswordEmail.value !== this.resetPasswordConfirmEmail.value){
+      alert("Emails do not match!")
+      return;
+    }
+
+    const tempClient:Client[] = await this.http.get<Array<Client>>(`http://localhost:9111/clients?username=${this.resetPasswordUsername.value}`).toPromise();
     if(tempClient === null){
+      alert("Information is not valid!")
       this.wrongEmail = true;
       return;
     }
 
     console.log(tempClient);
     
-    const status = await this.serv.resetPassword(this.resetPasswordEmail,this.resetPasswordUsername);  
+    const status = await this.serv.resetPassword(this.resetPasswordEmail.value,this.resetPasswordUsername.value);  
     console.log(status);
     
     if(status > 199 && status < 400){

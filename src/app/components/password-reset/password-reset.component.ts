@@ -13,7 +13,7 @@ export class PasswordResetComponent implements OnInit {
 
   email:string;
   key:string;
-  username:string;
+  private username:string;
   password = new FormControl('');
   confirmPassword = new FormControl('');
   client:Client;
@@ -30,7 +30,8 @@ export class PasswordResetComponent implements OnInit {
       
       alert("Password has been reset successfully!")
       //send to login page
-      this.router.navigate([''])
+      localStorage.removeItem("clientResetPassword");
+      this.router.navigate(['']);
       
     }else{
       alert("Passwords do not match!")
@@ -51,10 +52,16 @@ export class PasswordResetComponent implements OnInit {
   }
 
   async checkKeyAndEmail(){
-    this.client = await this.api.verifyAccount(this.username, this.email,this.key);
-
+    if(localStorage.getItem("clientResetPassword") === null){
+      this.client = await this.api.verifyAccount(this.username, this.email,this.key);
+      localStorage.setItem("clientResetPassword",JSON.stringify(this.client));
+    }
+    else{
+      this.client = JSON.parse(localStorage.getItem("clientResetPassword"));
+    }
     if(this.client === null){
       alert("This is an invalid link.")
+      this.router.navigate([""]);
     }
   }
 

@@ -140,7 +140,7 @@ export class ApiServiceService {
     return this.http.put<Client>(`${this.path}/clients`, client).toPromise();
   }
   //does not work
-  async resetPassword(requestEmail:string,requestedUsername):Promise<number>{
+  async resetPassword(requestEmail:string, requestedUsername:string):Promise<number>{
 
     //add username to this config
     let config = {

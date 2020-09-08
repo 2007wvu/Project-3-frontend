@@ -27,7 +27,7 @@ export class PasswordResetComponent implements OnInit {
       this.api.updatePassword(this.client);
 
       //send to login page
-      // this.router.navigate([])
+      this.router.navigate([''])
       
     }else{
       alert('Passwords do not match!')

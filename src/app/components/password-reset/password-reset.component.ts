@@ -13,7 +13,7 @@ export class PasswordResetComponent implements OnInit {
 
   email:string;
   key:string;
-  username:string;
+  private username:string;
   password = new FormControl('');
   confirmPassword = new FormControl('');
   client:Client;

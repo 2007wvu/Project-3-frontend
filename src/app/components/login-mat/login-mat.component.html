@@ -207,7 +207,7 @@
                           <div class="email-input">
                             <div class="email-input-header">
                                 <div class="email-input-input">
-                                    <input name="usernameInput" type="text" required>
+                                    <input name="usernameInput" type="text" [formControl]="resetPasswordUsername" required>
                                     <span>
                                         <label>
                                             <span>Username</span>
@@ -234,7 +234,7 @@
                           <div class="email-input">
                             <div class="email-input-header">
                                 <div class="email-input-input">
-                                    <input name="emailInput" type="text" required>
+                                    <input name="emailInput" type="text" [formControl]="resetPasswordEmail" required>
                                     <span>
                                         <label>
                                             <span>Email</span>
@@ -260,7 +260,7 @@
                           <div class="email-input">
                             <div class="email-input-header">
                                 <div class="email-input-input">
-                                    <input name="confrimEmailInput" type="text" required>
+                                    <input name="confrimEmailInput" [formControl]="resetPasswordConfirmEmail" type="text" required>
                                     <span>
                                         <label>
                                             <span>Confirm Email</span>

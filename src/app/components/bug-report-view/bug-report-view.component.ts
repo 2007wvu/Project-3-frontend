@@ -139,7 +139,7 @@ export class BugReportViewComponent implements OnInit {
     }
     async updateSolution(solution:Solution) {
         await this.apiserv.putSolution(solution)
-        this.openSnackBar(`Solution is ${solution.status}!`,"Dance");
+        this.openSnackBar(`Solution is ${solution.status}!`,"");
     }
     openSnackBar(message: string, action: string) {
         this._snackBar.open(message, action, {

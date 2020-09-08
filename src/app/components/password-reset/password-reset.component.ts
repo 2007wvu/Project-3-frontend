@@ -17,20 +17,25 @@ export class PasswordResetComponent implements OnInit {
   password = new FormControl('');
   confirmPassword = new FormControl('');
   client:Client;
+  passwordsMatch:boolean = false;
   
   constructor(private router: Router,private activeRouter:ActivatedRoute, private api:ApiServiceService) { }
 
   submit(){
-    if(this.password.value === this.confirmPassword.value){
+    this.passwordsMatch = this.password.value === this.confirmPassword.value;
+    if(this.passwordsMatch){
       this.client.password = this.password.value;
-      //reset password in db
+      //reset password in database
       this.api.updatePassword(this.client);
-
+      
+      alert("Password has been reset successfully!")
       //send to login page
       this.router.navigate([''])
       
     }else{
-      alert('Passwords do not match!')
+      alert("Passwords do not match!")
+      this.password.reset();
+      this.confirmPassword.reset();
     }
   }
 
@@ -47,9 +52,10 @@ export class PasswordResetComponent implements OnInit {
 
   async checkKeyAndEmail(){
     this.client = await this.api.verifyEmail(this.username, this.email,this.key);
-    //return client with that email and key
 
-    //or return null if does not match db
+    if(this.client === null){
+      alert("This is an invalid link.")
+    }
   }
 
 }

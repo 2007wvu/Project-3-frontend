@@ -3,12 +3,12 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import {MatTableDataSource} from '@angular/material/table';
+// import {MatTableDataSource} from '@angular/material/table';
 import {Input} from '@angular/core';
 import BugReport from '../../models/BugReport';
-import {AdminBugsTableComponent} from './admin-bugs-table.component';
+// import {AdminBugsTableComponent} from './admin-bugs-table.component';
 import Solution from '../../models/Solution';
-import {ApiServiceService} from '../../services/api-service.service';
+// import {ApiServiceService} from '../../services/api-service.service';
 
 // TODO: Replace this with your own data model type
 

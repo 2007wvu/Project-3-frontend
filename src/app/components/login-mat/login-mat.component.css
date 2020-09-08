@@ -30,10 +30,11 @@ mat-card-content {
 }
 
 .login-button {
-  margin-top: 20px;
   display: block;
   width: 80%;
+  
   margin: 20px auto;
+  
 }
 
 #title{
